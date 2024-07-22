@@ -1,0 +1,60 @@
+name: Deploy Hexo to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # 推送到main主分支时触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+      - uses: actions/checkout@v4
+        with:
+          submodules: false # 禁用子模块检查
+
+      - name: Setup NodeJS 20
+        uses: actions/setup-node@v4
+        with:
+          # Examples: 20, 18.19, >=16.20.2, lts/Iron, lts/Hydrogen, *, latest, current, node
+          # Ref: https://github.com/actions/setup-node#supported-version-syntax
+          node-version: "20"
+
+      - name: Cache NPM dependencies
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-npm-cache
+          restore-keys: |
+            ${{ runner.OS }}-npm-cache
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Install Hexo Git Deployer
+        run: |
+          npm install hexo-deployer-git --save
+          npm install hexo-cli -g
+
+      - name: Clean and Generate Static Files
+        run: |
+          hexo clean
+          hexo generate
+
+      - name: Configure Git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Deploy to GitHub Pages
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          cd public/
+          git init
+          git add -A
+          git commit -m "Create by workflows"
+          git remote add origin https://${{ secrets.GH_TOKEN }}@github.com/FukuaLangzi/PersonalBlog.git
+          git push origin HEAD:gh-pages -f
