@@ -33,10 +33,10 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Install Themes
-        run: |
-          cd themes
-          git clone https://github.com/theme-particlex/hexo-theme-particlex.git particlex --depth=1
+      # - name: Install Themes
+      #   run: |
+      #     cd themes
+      #     git clone https://github.com/theme-particlex/hexo-theme-particlex.git particlex --depth=1
 
       - name: Install Hexo Git Deployer
         run: |
