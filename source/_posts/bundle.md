@@ -33,7 +33,7 @@ Vite 是一个新兴的前端构建工具，它在开发环境下使用原生 ES
 
 ## 1. 模块是什么
 
-```
+```javascript
    import ... from ...
    export default ...
 ```
@@ -45,11 +45,9 @@ Vite 是一个新兴的前端构建工具，它在开发环境下使用原生 ES
 
 ## 3. 在 ES6 之前没有模块的年代是怎么做的
 
-```
+```javascript
 // 使用古老的 backbone.js
-
-   <script src="todos.js"></script>
-
+<script src="todos.js"></script>
 // 通过标签引入的方式
 ```
 
@@ -59,20 +57,20 @@ Vite 是一个新兴的前端构建工具，它在开发环境下使用原生 ES
 
 一个项目中基于同一个全局变量，各个模块按照自己的命名空间进行挂载，jquery 等较早时期的项目就使用了这种做法。
 
-```
+```javascript
 // IIFE 自执行函数，创建一个封闭的作用域，赋值给一个全局变量
-var namesCollection = (function() {
-// private members
-var objects = []
-// public method
-function addObject(object) {
-object.push(object)
- }
-return {
-addName: addObject
-}
-})()
-namesCollection.addName('viking')
+var namesCollection = (function () {
+  // private members
+  var objects = [];
+  // public method
+  function addObject(object) {
+    object.push(object);
+  }
+  return {
+    addName: addObject,
+  };
+})();
+namesCollection.addName("viking");
 ```
 
 缺点：
@@ -86,11 +84,9 @@ namesCollection.addName('viking')
 
 nodejs 推出的时候，开发出了自己的模块化系统，称为 commonJS
 
-```
-const bar = require('./bar')
-module.exports = function(){
-
-}
+```javascript
+const bar = require("./bar");
+module.exports = function () {};
 ```
 
 - 只是为服务器端使用的，不符合浏览器的标准，没法在浏览器里直接运行
@@ -116,11 +112,9 @@ module.exports = function(){
 
 ## 5. 最终，JS 官方终于出手，提供了当前公认的模块化标准 ES6 modules
 
-```
-import bar from './bar'
-export default function(){
-
-}
+```javascript
+import bar from "./bar";
+export default function () {}
 ```
 
 - 引入和暴露的方式更加多样
