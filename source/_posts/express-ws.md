@@ -114,6 +114,6 @@ var server = http.createServer(app);
 var server = app;
 ```
 
-这样就可以成功连接了,地址是：ws://localhost:3000/wsmodule/test
+这样就可以成功连接了，地址是：ws://localhost:3000/wsmodule/test
 
 具体原因看 issue 就行
