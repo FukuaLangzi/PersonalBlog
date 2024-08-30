@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8" />
+    <title>npm锁版本 | Ye&#39;s Blog</title>
+    <meta name="author" content="Liu Ye" />
+    <meta name="description" content="前端小菜鸡" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/PersonalBlog/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/PersonalBlog/js/lib/highlight.js"></script>
+
+
+
+<script src="/PersonalBlog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/PersonalBlog/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/PersonalBlog/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/PersonalBlog/">
+            <span>YE&#39;S BLOG</span>
+        </a>
+        
+        <a href="/PersonalBlog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/PersonalBlog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/PersonalBlog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/PersonalBlog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/PersonalBlog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;YE&#39;S BLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/PersonalBlog/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/PersonalBlog/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/PersonalBlog/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/PersonalBlog/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/PersonalBlog/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>npm锁版本</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/8/13
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/PersonalBlog/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/" style="color: #03a9f4">
+                    工程化
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="版本号解析"><a href="#版本号解析" class="headerlink" title="版本号解析"></a>版本号解析</h1><p>分为三部分</p>
+<p>例如：antd-mobile: ^5.8.1-alpha.3</p>
+<p>其中， 三个数字依次为主版本号（major）、次版本号（minor）、小版本号（patch）、版本号标签。</p>
+<p>以上的版本号书写，都遵循 Semver 规范</p>
+<h1 id="Semver-规范"><a href="#Semver-规范" class="headerlink" title="Semver 规范"></a>Semver 规范</h1><p>Major：新增不可向后兼容的新功能</p>
+<p>Minor：新增可向后兼容的新功能</p>
+<p>Patch：修复 bug<br>简单来说就是：主版本一般是大更新，比如从 vue2 -&gt; vue3 这种，次版本就是加个功能之类的，大体上变化不大。</p>
+<h1 id="常用的版本号标签"><a href="#常用的版本号标签" class="headerlink" title="常用的版本号标签"></a>常用的版本号标签</h1><p>latest（默认）、alpha（内测）、beta（公测）、next（下一个）、rc（候选）、experimental（实验）</p>
+<h1 id="版本前的符号"><a href="#版本前的符号" class="headerlink" title="版本前的符号"></a>版本前的符号</h1><p>符号^: 主版本号固定，其他版本号更新到最新版（也就是说次版本号和小版本号都是会更新到最新的）</p>
+<p>符号~: 主次版本号固定，小版本号更新到最新版</p>
+<p>无符号：固定版本号</p>
+<h1 id="如何锁定版本"><a href="#如何锁定版本" class="headerlink" title="如何锁定版本"></a>如何锁定版本</h1><p>答：npm lock，从 npm 5 开始，当执行 npm install 时，会自动生成 package-lock.json 文件</p>
+<h1 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h1><p>npm lock 文件（如 package-lock.json）的作用是确保在不同机器上或在不同时间安装相同的依赖包时，获得相同的版本，以避免由于版本不一致而产生的问题。在安装依赖包时，npm lock 文件会锁定当前的依赖树，并记录每个依赖包的确切版本号和依赖关系。在之后重新安装时会根据 lock 文件进行以来解析和安装。</p>
+<h1 id="lock-文件是如何生成的"><a href="#lock-文件是如何生成的" class="headerlink" title="lock 文件是如何生成的"></a>lock 文件是如何生成的</h1><p>生成 npm-lock 文件的原理如下：</p>
+<ul>
+<li><p>在第一次 npm i 时，npm 会先检查 package.json 文件，并根据依赖包信息生成 node_modules 文件夹存储依赖</p>
+</li>
+<li><p>在生成依赖文件夹时，npm 会生成一个 npm-shrinkwrap.json 或者 package-lock 文件，用来记录精确版本信息和依赖关系，且 npm-shrinkwrap 的优先级更高</p>
+</li>
+<li><p>下次安装时会优先检查这两个文件，如果有就按照这两个来，没有才会从新从 package.json 来解析依赖树</p>
+</li>
+</ul>
+<h1 id="npm-shrinkwrap-json-文件"><a href="#npm-shrinkwrap-json-文件" class="headerlink" title="npm-shrinkwrap.json 文件"></a>npm-shrinkwrap.json 文件</h1><p>在作用上他与 package-lock 文件的功能相同，但是区别在于，npm-shrinkwrap.json 可以锁定所有的依赖包版本，包括间接依赖的版本，而 package-lock.json 文件只会锁定直接依赖包的版本</p>
+<p>同时，在使用 npm-shrinkwrap 文件时，如果要升级依赖包的版本，需要手动更新 npm-shrinkwrap 文件中的版本号。</p>
+<h1 id="使用-npm-shrinkwrap-json"><a href="#使用-npm-shrinkwrap-json" class="headerlink" title="使用 npm-shrinkwrap.json"></a>使用 npm-shrinkwrap.json</h1><p>在根目录下：</p>
+<pre><code class="powershell">npm shrinkwrap
+</code></pre>
+<p>如果需要在安装新的包的同时更新 npm-shrinkwrap 文件：</p>
+<pre><code class="powershell">npm shrinkwrap --dev
+</code></pre>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2024 Ye&#39;s Blog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Liu Ye
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <canvas
+        id="fireworks"
+        style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"
+    ></canvas>
+    <canvas
+    id="background"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"
+></canvas>
+    <script src="https://s4.zstatic.net/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="/PersonalBlog/js/background.min.js"></script>
+    <script src="/PersonalBlog/js/fireworks.min.js"></script>
+    <script src="/PersonalBlog/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>

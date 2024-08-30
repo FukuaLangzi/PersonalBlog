@@ -1,0 +1,354 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8" />
+    <title>vue-plugins | Ye&#39;s Blog</title>
+    <meta name="author" content="Liu Ye" />
+    <meta name="description" content="前端小菜鸡" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/PersonalBlog/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/PersonalBlog/js/lib/highlight.js"></script>
+
+
+
+<script src="/PersonalBlog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/PersonalBlog/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/PersonalBlog/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/PersonalBlog/">
+            <span>YE&#39;S BLOG</span>
+        </a>
+        
+        <a href="/PersonalBlog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/PersonalBlog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/PersonalBlog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/PersonalBlog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/PersonalBlog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;YE&#39;S BLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/PersonalBlog/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/PersonalBlog/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/PersonalBlog/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/PersonalBlog/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/PersonalBlog/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>vue-plugins</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/8/8
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/PersonalBlog/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/" style="color: #00a596">
+                    工程化
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/PersonalBlog/tags/vue/" style="color: #03a9f4">
+                    vue
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="vue-插件"><a href="#vue-插件" class="headerlink" title="vue 插件"></a>vue 插件</h1><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>插件 (Plugins) 是一种能为 Vue 添加全局功能的工具代码</p>
+<pre><code class="javascript">import &#123; createApp &#125; from &quot;vue&quot;;
+import App from &quot;./App.vue&quot;;
+const app = createApp(App);
+
+app.use(myPlugin, &#123;
+  // 配置项
+&#125;);
+app.mount(&quot;#app&quot;);
+</code></pre>
+<p>其中，myPlugin 是我们自定义的插件对象</p>
+<h3 id="插件对象的规范"><a href="#插件对象的规范" class="headerlink" title="插件对象的规范"></a>插件对象的规范</h3><p>一个插件可以是一个拥有 install() 方法的对象，也可以直接是一个安装函数本身。安装函数会接收到安装他的应用实例和传递给 app.use()的额外选项作为参数：</p>
+<pre><code class="javascript">const myPlugin = &#123;
+  install(app, options) &#123;
+    // 配置此应用
+  &#125;,
+&#125;;
+</code></pre>
+<p>插件没有严格定义的使用范围，但是插件发挥作用的常见场景主要包括以下几种</p>
+<ul>
+<li><p>通过 app.component() 和 app.directive() 注册一到多个全局组件或自定义指令。</p>
+</li>
+<li><p>通过 app.provide() 使一个资源可被注入进整个应用。</p>
+</li>
+<li><p>向 app.config.globalProperties 中添加一些全局实例属性或方法</p>
+</li>
+<li><p>一个可能上述三种都包含了的功能库 (例如 vue-router)。</p>
+</li>
+</ul>
+<h3 id="插件代码示例"><a href="#插件代码示例" class="headerlink" title="插件代码示例"></a>插件代码示例</h3><p>代码文件</p>
+<pre><code class="typescript">import type &#123; App &#125; from &quot;vue&quot;;
+import Button from &quot;你的自定义组件地址&quot;;
+const plugins = &#123;
+  install: (app: App) =&gt; &#123;
+    app.config.globalProperties.$echo = (name: string) =&gt; &#123;
+      return `hello $&#123;name&#125;`;
+    &#125;;
+    app.component(&quot;wrButton&quot;, Button);
+    // test为injectKey
+    app.provide(&quot;test&quot;, &#123; message: &quot;from plugin&quot; &#125;);
+  &#125;,
+&#125;;
+export default plugins;
+</code></pre>
+<p>使用示例</p>
+<pre><code class="javascript">// main.js
+app.use(plugins);
+</code></pre>
+<pre><code>// index.vue
+&#123;&#123;$echo('echo in index')&#125;&#125;
+&lt;wrButton&gt;test&lt;/wrButton&gt;
+console.log(&#39;inject(&#39;test&#39;)&#39;)
+</code></pre>
+<p>但是在使用自定义的全局属性时，$echo 会报错，这是因为我们没有声明他的类型</p>
+<h3 id="扩展全局属性"><a href="#扩展全局属性" class="headerlink" title="扩展全局属性"></a>扩展全局属性</h3><p>某些插件会通过 app.config.globalProperties 为所有组件都安装全局可用的属性。举例来说，我们可能为了请求数据而安装了 this.$http，或者为了国际化而安装了 this.$translate。为了使 TypeScript 更好地支持这个行为，Vue 暴露了一个被设计为可以通过 TypeScript 模块扩展来扩展的 ComponentCustomProperties 接口：</p>
+<pre><code class="typescript">import axios from &quot;axios&quot;;
+
+declare module &quot;vue&quot; &#123;
+  interface ComponentCustomProperties &#123;
+    $http: typeof axios;
+    $translate: (key: string) =&gt; string;
+  &#125;
+&#125;
+</code></pre>
+<h3 id="类型扩展的位置"><a href="#类型扩展的位置" class="headerlink" title="类型扩展的位置"></a>类型扩展的位置</h3><p>我们可以将这些类型扩展放在一个 .ts 文件，或是一个影响整个项目的 *.d.ts 文件中。无论哪一种，都应确保在 tsconfig.json 中包括了此文件。对于库或插件作者，这个文件应该在 package.json 的 types 属性中被列出。</p>
+<p>为了利用模块扩展的优势，你需要确保将扩展的模块放在 TypeScript 模块 中。 也就是说，该文件需要包含至少一个顶级的 import 或 export，即使它只是 export {}。如果扩展被放在模块之外，它将覆盖原始类型，而不是扩展!</p>
+<pre><code class="typescript">// 不工作，将覆盖原始类型。
+declare module &quot;vue&quot; &#123;
+  interface ComponentCustomProperties &#123;
+    $translate: (key: string) =&gt; string;
+  &#125;
+&#125;
+</code></pre>
+<pre><code class="typescript">// 正常工作。
+export &#123;&#125;;
+
+declare module &quot;vue&quot; &#123;
+  interface ComponentCustomProperties &#123;
+    $translate: (key: string) =&gt; string;
+  &#125;
+&#125;
+</code></pre>
+<p>上面是文档写的，自己操作的话代码长这样（图方便写一起了）</p>
+<pre><code class="typescript">// ts文件，必须有导出或者导入
+import type &#123; App &#125; from &quot;vue&quot;;
+const plugins = &#123;
+  install: (app: App) =&gt; &#123;
+    app.config.globalProperties.$echo = (name: string) =&gt; &#123;
+      return `hello $&#123;name&#125;`;
+    &#125;;
+    // test为injectKey
+    app.provide(&quot;test&quot;, &#123; message: &quot;from plugin&quot; &#125;);
+  &#125;,
+&#125;;
+declare module &quot;vue&quot; &#123;
+  interface ComponentCustomProperties &#123;
+    $echo: (name: string) =&gt; string;
+  &#125;
+&#125;
+export default plugins;
+</code></pre>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2024 Ye&#39;s Blog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Liu Ye
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <canvas
+        id="fireworks"
+        style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"
+    ></canvas>
+    <canvas
+    id="background"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"
+></canvas>
+    <script src="https://s4.zstatic.net/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="/PersonalBlog/js/background.min.js"></script>
+    <script src="/PersonalBlog/js/fireworks.min.js"></script>
+    <script src="/PersonalBlog/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>

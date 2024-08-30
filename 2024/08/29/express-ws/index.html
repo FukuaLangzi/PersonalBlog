@@ -1,0 +1,342 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8" />
+    <title>express-generator模板与express-ws的不兼容问题 | Ye&#39;s Blog</title>
+    <meta name="author" content="Liu Ye" />
+    <meta name="description" content="前端小菜鸡" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/PersonalBlog/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/PersonalBlog/js/lib/highlight.js"></script>
+
+
+
+<script src="/PersonalBlog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/PersonalBlog/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/PersonalBlog/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/PersonalBlog/">
+            <span>YE&#39;S BLOG</span>
+        </a>
+        
+        <a href="/PersonalBlog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/PersonalBlog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/PersonalBlog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/PersonalBlog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/PersonalBlog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;YE&#39;S BLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/PersonalBlog/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/PersonalBlog/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/PersonalBlog/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/PersonalBlog/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/PersonalBlog/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>express-generator模板与express-ws的不兼容问题</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/8/29
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/PersonalBlog/tags/express/" style="color: #ff7d73">
+                    express
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/PersonalBlog/tags/express-ws/" style="color: #ffa2c4">
+                    express-ws
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/PersonalBlog/tags/bug/" style="color: #03a9f4">
+                    bug
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h2 id="由于最近在做一个-express-的项目，需要实时向前端传输-pm2-的-log-日志，于是想到了用-websocket，但是在使用时遇到了一些问题。"><a href="#由于最近在做一个-express-的项目，需要实时向前端传输-pm2-的-log-日志，于是想到了用-websocket，但是在使用时遇到了一些问题。" class="headerlink" title="由于最近在做一个 express 的项目，需要实时向前端传输 pm2 的 log 日志，于是想到了用 websocket，但是在使用时遇到了一些问题。"></a>由于最近在做一个 express 的项目，需要实时向前端传输 pm2 的 log 日志，于是想到了用 websocket，但是在使用时遇到了一些问题。</h2><h3 id="参考链接：https-github-com-HenningM-express-ws-issues-104"><a href="#参考链接：https-github-com-HenningM-express-ws-issues-104" class="headerlink" title="参考链接：https://github.com/HenningM/express-ws/issues/104"></a>参考链接：<a target="_blank" rel="noopener" href="https://github.com/HenningM/express-ws/issues/104">https://github.com/HenningM/express-ws/issues/104</a></h3><h3 id="接下来从头开始，创建一个-express-generator-模板的项目并添加-websocket"><a href="#接下来从头开始，创建一个-express-generator-模板的项目并添加-websocket" class="headerlink" title="接下来从头开始，创建一个 express-generator 模板的项目并添加 websocket"></a>接下来从头开始，创建一个 express-generator 模板的项目并添加 websocket</h3><ol>
+<li>创建项目</li>
+</ol>
+<pre><code class="powershell">express express-websocket
+cd express-websocket
+npm i
+code .
+</code></pre>
+<ol start="2">
+<li>引入 express-ws</li>
+</ol>
+<pre><code class="powershell">npm i express-ws
+</code></pre>
+<ol start="3">
+<li>先启动项目看能否正确运行</li>
+</ol>
+<pre><code class="powershell">nodemon npm run start
+</code></pre>
+<p>nodemon 没有的可以安一下</p>
+<p>出现下面的就是启动成功了</p>
+<img src="/PersonalBlog/2024/08/29/express-ws/1.png" class="">
+<p>如果想加点提示可以在&#x2F;bin&#x2F;www 这个文件中更改</p>
+<pre><code class="javascript">function onListening() &#123;
+  var addr = server.address();
+  var bind = typeof addr === &quot;string&quot; ? &quot;pipe &quot; + addr : &quot;port &quot; + addr.port;
+  debug(&quot;Listening on &quot; + bind);
+  console.log(`$&#123;addr.port&#125;端口监听中`); // 这里加一句话就行
+&#125;
+</code></pre>
+<p>加完之后要重新运行 nodemon npm run start,因为这个文件属于配置文件没有被监听</p>
+<p>之后按照 express 文档的做法，添加 express-ws 的包</p>
+<pre><code class="javascript">var expressWs = require(&quot;express-ws&quot;);
+var app = express();
+expressWs(app); // 这句话一定要在use路由之前
+</code></pre>
+<p>然后在 express 的各个小 router 中也要做 ws 的处理</p>
+<pre><code class="javascript">var express = require(&quot;express&quot;);
+var expressWs = require(&quot;express-ws&quot;);
+var router = express.Router();
+expressWs(router);
+</code></pre>
+<p>然后就可以正常书写 ws 代码了</p>
+<pre><code class="javascript">// wsmodule.js
+router.ws(&quot;/test&quot;, async function (ws, req, next) &#123;
+  console.log(&quot;connect success&quot;);
+  console.log(ws);
+
+  // 使用 ws 的 send 方法向连接另一端的客户端发送数据
+  ws.send(&quot;connect to express server with WebSocket success&quot;);
+
+  // 使用 on 方法监听事件
+  //   message 事件表示从另一段（服务端）传入的数据
+  ws.on(&quot;message&quot;, function (msg) &#123;
+    console.log(`receive message $&#123;msg&#125;`);
+    ws.send(&quot;default response&quot;);
+  &#125;);
+
+  // 设置定时发送消息
+  let timer = setInterval(() =&gt; &#123;
+    ws.send(`interval message $&#123;new Date()&#125;`);
+  &#125;, 2000);
+
+  // close 事件表示客户端断开连接时执行的回调函数
+  ws.on(&quot;close&quot;, function (e) &#123;
+    console.log(&quot;close connection&quot;);
+    clearInterval(timer);
+    timer = undefined;
+  &#125;);
+&#125;);
+</code></pre>
+<p>这时启动代码就不会有报错，但是发送请求的时候会 404，我们还需要修改一个地方</p>
+<pre><code class="javascript">// bin/www
+/**
+ * Create HTTP server.
+ */
+
+var server = http.createServer(app);
+// 把上面的话转换成下面的
+var server = app;
+</code></pre>
+<p>这样就可以成功连接了，地址是：ws:&#x2F;&#x2F;localhost:3000&#x2F;wsmodule&#x2F;test</p>
+<p>具体原因看 issue 就行</p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2024 Ye&#39;s Blog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Liu Ye
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <canvas
+        id="fireworks"
+        style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"
+    ></canvas>
+    <canvas
+    id="background"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"
+></canvas>
+    <script src="https://s4.zstatic.net/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="/PersonalBlog/js/background.min.js"></script>
+    <script src="/PersonalBlog/js/fireworks.min.js"></script>
+    <script src="/PersonalBlog/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>
