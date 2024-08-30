@@ -1,7 +1,9 @@
 ---
 title: vue-plugins
 date: 2024-08-08 16:52:04
-tags: vue, 工程化
+tags:
+  - vue
+  - 工程化
 description: vue插件初探
 ---
 

@@ -1,7 +1,8 @@
 ---
 title: npm锁版本
 date: 2024-08-13 14:10:35
-tags: 工程化
+tags:
+  - 工程化
 description: 关于锁定依赖版本的那些事
 ---
 

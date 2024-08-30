@@ -1,7 +1,9 @@
 ---
 title: bundle
 date: 2024-08-08 15:24:36
-tags: 工程化 bundle
+tags:
+  - 工程化
+  - bundle
 description: bundle的一些小知识
 ---
 

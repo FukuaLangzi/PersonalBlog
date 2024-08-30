@@ -1,7 +1,9 @@
 ---
 title: vite
 date: 2024-08-08 15:45:38
-tags: 工程化 vite
+tags:
+  - 工程化
+  - vite
 description: vite的一些特点和原理
 ---
 
